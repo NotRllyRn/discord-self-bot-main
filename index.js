@@ -7,4 +7,7 @@ const client = new Discord.Client();
 
 client.login(process.env.token);
 const app = express();
+app.get('/', (req, res) => {
+    res.send('.');
+})
 app.listen(process.env.PORT);
