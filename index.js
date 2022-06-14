@@ -4,8 +4,8 @@ dotenv.config();
 const {Client} = require('discord.js-selfbot-v13');
 const express = require('express');
 const client = new Client();
+const app = express();
 
-client.login(process.env.token);
 client.on('ready', () => {
     client.setting.setCustomStatus({
         status: 'online',
@@ -14,7 +14,7 @@ client.on('ready', () => {
         expires: null,
       });
 });
-const app = express();
+client.login(process.env.token);
 app.get('/', (req, res) => {
     res.send('.');
 })
