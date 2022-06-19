@@ -1,0 +1,24 @@
+var Offline = false
+var client
+
+export default {
+    run: async (name, ...args) => {
+        if (this[name]) {
+            return this[name](...args)
+        } else {
+            return `Command not found`
+        }
+    },
+    setClient: (cl) => {
+        if (cl) client = cl;
+    },
+    tstatus: async () => {
+        Offline = !Offline
+        client.setting.setCustomStatus({
+            status: !Offline ? 'online' : 'idle',
+            text: 'Catch me offline and ill give you $10',
+            emoji: null,
+            expires: null,
+        });
+    }
+}
