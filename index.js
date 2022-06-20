@@ -18,7 +18,7 @@ client.on('ready', () => {
 });
 client.on('messageCreate', async (msg) => {
     if ((msg.author != client.user) || (!msg.content.startsWith("!"))) return;
-    const output = commands.run(...msg.content.trim().substring(1).split(' '));
+    const output = await commands.run(...msg.content.trim().substring(1).split(' '));
 
     console.log("output: " + output);
 

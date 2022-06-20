@@ -19,7 +19,7 @@ module.exports = {
         console.log(name)
         if (commands[name]) {
             console.log("found")
-            return await commands[name](...args)
+            return commands[name](...args)
         } else {
             console.log("no")
             return `Command not found`
