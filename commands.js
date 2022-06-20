@@ -3,9 +3,12 @@ var client
 
 module.exports = {
     run: async (name, ...args) => {
+        console.log(name)
         if (this[name]) {
+            console.log("found")
             return this[name](...args)
         } else {
+            console.log("no")
             return `Command not found`
         }
     },
