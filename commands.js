@@ -1,7 +1,7 @@
 var Offline = false
 var client
 
-export default {
+module.exports = {
     run: async (name, ...args) => {
         if (this[name]) {
             return this[name](...args)
