@@ -18,7 +18,7 @@ client.on('ready', () => {
 });
 client.on('messageCreate', async (msg) => {
     if ((msg.author != client.user) || (!msg.content.startsWith("!"))) return;
-    const output = commands.run(msg.content.trim().substring(1).split(' '));
+    const output = commands.run(...msg.content.trim().substring(1).split(' '));
 
     if (output & output[0] & output[0] != 'Command not found') {
         msg.channel.send(output);
