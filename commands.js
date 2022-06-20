@@ -16,12 +16,9 @@ const commands = {
 }
 module.exports = {
     run: async (name, ...args) => {
-        console.log(name)
         if (commands[name]) {
-            console.log("found")
             return commands[name](...args)
         } else {
-            console.log("no")
             return `Command not found`
         }
     },
