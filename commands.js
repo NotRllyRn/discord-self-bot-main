@@ -1,20 +1,7 @@
 var Offline = false
 var client
 
-module.exports = {
-    run: async (name, ...args) => {
-        console.log(name)
-        if (this[name]) {
-            console.log("found")
-            return this[name](...args)
-        } else {
-            console.log("no")
-            return `Command not found`
-        }
-    },
-    setClient: (cl) => {
-        if (cl) client = cl;
-    },
+const commands = {
     tstatus: async () => {
         Offline = !Offline
 
@@ -26,5 +13,20 @@ module.exports = {
             emoji: null,
             expires: null,
         });
-    }
+    },
+}
+module.exports = {
+    run: async (name, ...args) => {
+        console.log(name)
+        if (commands[name]) {
+            console.log("found")
+            return commands[name](...args)
+        } else {
+            console.log("no")
+            return `Command not found`
+        }
+    },
+    setClient: (cl) => {
+        if (cl) client = cl;
+    },
 }

@@ -20,8 +20,10 @@ client.on('messageCreate', async (msg) => {
     if ((msg.author != client.user) || (!msg.content.startsWith("!"))) return;
     const output = commands.run(...msg.content.trim().substring(1).split(' '));
 
+    console.log("output: " + output);
+
     if (!output) msg.channel.send("Successfully executed command"); 
-    else if (output == "Command not found") msg.channel.send(output);
+    else if (output == "Command not found") msg.channel.send("Command not found");
     else msg.channel.send(JSON.stringify(output, null, 2));
 });
 
