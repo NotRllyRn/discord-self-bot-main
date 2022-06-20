@@ -16,7 +16,7 @@ client.on('ready', () => {
     });
     commands.setClient(client);
 });
-client.on('message', async (msg) => {
+client.on('messageCreate', async (msg) => {
     if ((msg.author != client.user) || (!msg.content.startsWith("!"))) return;
     const output = commands.run(msg.content.trim().substring(1).split(' '));
 

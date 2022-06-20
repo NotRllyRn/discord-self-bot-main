@@ -14,6 +14,9 @@ module.exports = {
     },
     tstatus: async () => {
         Offline = !Offline
+
+        console.log(!Offline ? 'online' : 'idle')
+
         client.setting.setCustomStatus({
             status: !Offline ? 'online' : 'idle',
             text: 'Catch me offline and ill give you $10',
