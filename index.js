@@ -18,11 +18,11 @@ client.on('ready', () => {
 });
 client.on('message', async (msg) => {
     if ((msg.author != client.user) || (!msg.content.startsWith("!"))) return;
-    const [output] = commands.run(msg.content.trim().substring(1).split(' '));
+    const output = commands.run(msg.content.trim().substring(1).split(' '));
 
-    if (output[0] & output[0] != 'Command not found') {
+    if (output & output[0] & output[0] != 'Command not found') {
         msg.channel.send(output);
-    } else if (output[0] == 'Command not found') {
+    } else if (output & output[0] == 'Command not found') {
         msg.channel.send("Command not found");
     } else {
         msg.channel.send('Success');
