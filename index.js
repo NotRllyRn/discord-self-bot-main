@@ -7,6 +7,9 @@ const client = new Client();
 const app = express();
 const commands = require('./commands');
 
+let idleto
+let offlineto
+
 client.on('ready', () => {
     client.setting.setCustomStatus({
         status: 'online',
@@ -19,6 +22,41 @@ client.on('ready', () => {
 client.on('messageCreate', async (msg) => {
     if ((msg.author != client.user) || (!msg.content.startsWith("!"))) return;
     const output = await commands.run(...msg.content.trim().substring(1).split(' '));
+
+    client.setting.setCustomStatus({
+        status: 'online',
+        text: 'Catch me offline and ill give you $10',
+        emoji: null,
+        expires: null,
+    });
+
+    if (idleto) {
+        clearTimeout(idleto);
+        idleto = null;
+    }
+    if (offlineto) {
+        clearTimeout(offlineto);
+        offlineto = null;
+    }
+
+    idleto = setTimeout(() => {
+        client.setting.setCustomStatus({
+            status: 'idle',
+            text: 'Catch me offline and ill give you $10',
+            emoji: null,
+            expires: null,
+        });
+        idleto = null;
+    }, 5 * 60 * 1000);
+    offlineto = setTimeout(() => {
+        client.setting.setCustomStatus({
+            status: 'dnd',
+            text: 'Catch me offline and ill give you $10',
+            emoji: null,
+            expires: null,
+        });
+        offlineto = null;
+    }, 30 * 60 * 1000);
 
     if (!output) msg.channel.send("Successfully executed command"); 
     else if (output == "Command not found") msg.channel.send("Command not found");
