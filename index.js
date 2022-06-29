@@ -13,7 +13,7 @@ let offlineto
 client.on('ready', () => {
     client.setting.setCustomStatus({
         status: 'online',
-        text: 'Catch me offline and ill give you $10',
+        text: 'I am no longer giving 10 dollars to people who see me offline.',
         emoji: null,
         expires: null,
     });
@@ -23,7 +23,7 @@ client.on('messageCreate', async (msg) => {
     if (msg.author == client.user) {
         client.setting.setCustomStatus({
             status: 'online',
-            text: 'Catch me offline and ill give you $10',
+            text: 'I am no longer giving 10 dollars to people who see me offline.',
             emoji: null,
             expires: null,
         });
@@ -40,7 +40,7 @@ client.on('messageCreate', async (msg) => {
         idleto = setTimeout(() => {
             client.setting.setCustomStatus({
                 status: 'idle',
-                text: 'Catch me offline and ill give you $10',
+                text: 'I am no longer giving 10 dollars to people who see me offline.',
                 emoji: null,
                 expires: null,
             });
@@ -49,7 +49,7 @@ client.on('messageCreate', async (msg) => {
         offlineto = setTimeout(() => {
             client.setting.setCustomStatus({
                 status: 'dnd',
-                text: 'Catch me offline and ill give you $10',
+                text: 'I am no longer giving 10 dollars to people who see me offline.',
                 emoji: null,
                 expires: null,
             });
